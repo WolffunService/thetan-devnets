@@ -41,7 +41,7 @@ locals {
   base_cidr_block = var.base_cidr_block
   google_vpcs = {
     for region in var.regions : region => {
-      name     = "${var.ethereum_network}-${join("-", slice(split("-", region), 0, 2))}"
+      name     = "${var.ethereum_network}-${region}"
       region   = region
       ip_range = cidrsubnet(local.base_cidr_block, 8, index(var.regions, region))
     }
