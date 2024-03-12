@@ -6,7 +6,7 @@
 #  ░╚═════╝░╚══════╝░╚════╝░╚═════╝░╚═╝░░╚═╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
 
 network_subdomain: "{{ ethereum_network_name }}.giangho.pro"
-server_fqdn: "{{ inventory_hostname }}.srv.{{ network_subdomain }}"
+server_fqdn: "{{ inventory_hostname }}.{{ network_subdomain }}"
 
 ethereum_network_id: >-
   {{ (lookup('file', eth_testnet_config_local_dir_src + '/genesis.json') | from_json).config.chainId }}
@@ -24,8 +24,8 @@ ethstats_secret: "{{ secret_ethstats }}"
 ### Checkpoint sync specific for Ansible & Kubernetes
 checkpoint_sync_node: teku-nethermind-1
 checkpoint_sync_enabled: false
-checkpoint_sync_url: https://{{ secret_nginx_shared_basic_auth.name }}:{{ secret_nginx_shared_basic_auth.password }}@bn.{{ checkpoint_sync_node }}.srv.{{ ethereum_network_name }}.giangho.pro
-checkpoint_sync_url_kube: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.dencun-devnets.node_ingress.combined}>@bn.{{ checkpoint_sync_node }}.srv.{{ ethereum_network_name }}.giangho.pro
+checkpoint_sync_url: https://{{ secret_nginx_shared_basic_auth.name }}:{{ secret_nginx_shared_basic_auth.password }}@bn.{{ checkpoint_sync_node }}.{{ ethereum_network_name }}.giangho.pro
+checkpoint_sync_url_kube: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.dencun-devnets.node_ingress.combined}>@bn.{{ checkpoint_sync_node }}.{{ ethereum_network_name }}.giangho.pro
 #  ██████╗░░█████╗░██╗░░░░░███████╗  ██╗░░░██╗░█████╗░██████╗░░██████╗
 #  ██╔══██╗██╔══██╗██║░░░░░██╔════╝  ██║░░░██║██╔══██╗██╔══██╗██╔════╝
 #  ██████╔╝██║░░██║██║░░░░░█████╗░░  ╚██╗░██╔╝███████║██████╔╝╚█████╗░
@@ -55,7 +55,7 @@ ethereum_genesis_generator_config_files:
     export EL_AND_CL_MNEMONIC="{{ ethereum_genesis_mnemonic }}"
     export CL_EXEC_BLOCK="0"
     export DEPOSIT_CONTRACT_BLOCK="0x0000000000000000000000000000000000000000000000000000000000000000"
-    export NUMBER_OF_VALIDATORS=100
+    export NUMBER_OF_VALIDATORS=200
     export GENESIS_FORK_VERSION="0x10{{ ethereum_genesis_fork_version_suffix }}"
     export ALTAIR_FORK_VERSION="0x20{{ ethereum_genesis_fork_version_suffix }}"
     export BELLATRIX_FORK_VERSION="0x30{{ ethereum_genesis_fork_version_suffix }}"
@@ -139,7 +139,7 @@ gen_basic_auth_nginx_password: "{{ secret_nginx_shared_basic_auth.password }}"
 
 # role: ethpandaops.general.docker_nginx_proxy
 docker_nginx_proxy_container_name: nginx-proxy
-docker_nginx_proxy_default_email: "certs@giangho.pro"
+docker_nginx_proxy_default_email: "trungdlp@wolffungame.com"
 docker_nginx_proxy_docker_gen_container_name: nginx-proxy-gen
 docker_nginx_proxy_docker_gen_container_env:
   RESOLVERS: "1.1.1.1"

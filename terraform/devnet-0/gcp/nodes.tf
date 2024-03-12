@@ -48,9 +48,9 @@ variable "lighthouse_ethereumjs" {
 variable "lighthouse_erigon" {
   default = {
     name            = "lighthouse-erigon"
-    count           = 0
-    validator_start = 0
-    validator_end   = 0
+    count           = 1
+    validator_start = 100
+    validator_end   = 200
   }
 }
 
@@ -250,7 +250,7 @@ variable "teku_besu" {
 variable "teku_nethermind" {
   default = {
     name            = "teku-nethermind"
-    count           = 1
+    count           = 0
     validator_start = 0
     validator_end   = 0
   }
