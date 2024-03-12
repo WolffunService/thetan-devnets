@@ -42,8 +42,8 @@
       tags: [ethereum, ethereum_node]
     - role: ethpandaops.general.docker_nginx_proxy
       tags: [docker_nginx_proxy]
-    - role: ethpandaops.general.generate_basic_auth_nginx
-      tags: [docker_nginx_proxy]
+    # - role: ethpandaops.general.generate_basic_auth_nginx
+    #   tags: [docker_nginx_proxy]
 
 - hosts: ethereum_node
   serial: "{{ batch_count | default('100%') }}"
@@ -58,8 +58,8 @@
       tags: [ethereum, ethereum_node]
     - role: ethpandaops.general.docker_nginx_proxy
       tags: [docker_nginx_proxy]
-    - role: ethpandaops.general.generate_basic_auth_nginx
-      tags: [docker_nginx_proxy]
+    # - role: ethpandaops.general.generate_basic_auth_nginx
+    #   tags: [docker_nginx_proxy]
   post_tasks:
     - name: Wait between runs
       tags: [ethereum, ethereum_node]
