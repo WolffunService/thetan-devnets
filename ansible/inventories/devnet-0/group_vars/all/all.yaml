@@ -5,8 +5,8 @@
 #  ╚██████╔╝███████╗╚█████╔╝██████╦╝██║░░██║███████╗  ░░╚██╔╝░░██║░░██║██║░░██║██████╔╝
 #  ░╚═════╝░╚══════╝░╚════╝░╚═════╝░╚═╝░░╚═╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
 
-network_subdomain: "{{ ethereum_network_name }}.ethpandaops.io"
-server_fqdn: "{{ inventory_hostname }}.srv.{{ network_subdomain }}"
+network_subdomain: "{{ ethereum_network_name }}.giangho.pro"
+server_fqdn: "{{ inventory_hostname }}.{{ network_subdomain }}"
 
 ethereum_network_id: >-
   {{ (lookup('file', eth_testnet_config_local_dir_src + '/genesis.json') | from_json).config.chainId }}
@@ -18,14 +18,14 @@ ethereum_network_deposit_contract_block: >-
 ethereum_node_rcp_hostname: "rpc.{{ server_fqdn }}"
 ethereum_node_beacon_hostname: "bn.{{ server_fqdn }}"
 
-ethstats_url: "ethstats.{{ ethereum_network_name }}.ethpandaops.io"
+ethstats_url: "ethstats.{{ ethereum_network_name }}.giangho.pro"
 ethstats_secret: "{{ secret_ethstats }}"
 
 ### Checkpoint sync specific for Ansible & Kubernetes
 checkpoint_sync_node: teku-nethermind-1
 checkpoint_sync_enabled: false
-checkpoint_sync_url: https://{{ secret_nginx_shared_basic_auth.name }}:{{ secret_nginx_shared_basic_auth.password }}@bn.{{ checkpoint_sync_node }}.srv.{{ ethereum_network_name }}.ethpandaops.io
-checkpoint_sync_url_kube: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.dencun-devnets.node_ingress.combined}>@bn.{{ checkpoint_sync_node }}.srv.{{ ethereum_network_name }}.ethpandaops.io
+checkpoint_sync_url: https://{{ secret_nginx_shared_basic_auth.name }}:{{ secret_nginx_shared_basic_auth.password }}@bn.{{ checkpoint_sync_node }}.{{ ethereum_network_name }}.giangho.pro
+checkpoint_sync_url_kube: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.dencun-devnets.node_ingress.combined}>@bn.{{ checkpoint_sync_node }}.{{ ethereum_network_name }}.giangho.pro
 #  ██████╗░░█████╗░██╗░░░░░███████╗  ██╗░░░██╗░█████╗░██████╗░░██████╗
 #  ██╔══██╗██╔══██╗██║░░░░░██╔════╝  ██║░░░██║██╔══██╗██╔══██╗██╔════╝
 #  ██████╔╝██║░░██║██║░░░░░█████╗░░  ╚██╗░██╔╝███████║██████╔╝╚█████╗░
@@ -46,16 +46,16 @@ ethereum_genesis_timestamp_relative_cmd:
   Darwin: "date -v +45M +%s"
 ethereum_genesis_mnemonic: "{{ secret_genesis_mnemonic }}"
 ethereum_genesis_generator_config_files:
-  cl/config.yaml: "{{ lookup('ansible.builtin.url', 'https://raw.githubusercontent.com/ethpandaops/ethereum-genesis-generator/v{{ethereum_genesis_generator_version}}/config-example/cl/config.yaml', split_lines=false) }}" # noqa yaml[line-length]
-  cl/mnemonics.yaml: "{{ lookup('ansible.builtin.url', 'https://raw.githubusercontent.com/ethpandaops/ethereum-genesis-generator/v{{ethereum_genesis_generator_version}}/config-example/cl/mnemonics.yaml', split_lines=false) }}" # noqa yaml[line-length]
-  el/genesis-config.yaml: "{{ lookup('ansible.builtin.url', 'https://raw.githubusercontent.com/ethpandaops/ethereum-genesis-generator/v{{ethereum_genesis_generator_version}}/config-example/el/genesis-config.yaml', split_lines=false) }}" # noqa yaml[line-length]
+  cl/config.yaml: "{{ lookup('ansible.builtin.url', 'https://raw.githubusercontent.com/trungdlp-wolffun/ethereum-genesis-generator/v{{ethereum_genesis_generator_version}}/config-example/cl/config.yaml', split_lines=false) }}" # noqa yaml[line-length]
+  cl/mnemonics.yaml: "{{ lookup('ansible.builtin.url', 'https://raw.githubusercontent.com/trungdlp-wolffun/ethereum-genesis-generator/v{{ethereum_genesis_generator_version}}/config-example/cl/mnemonics.yaml', split_lines=false) }}" # noqa yaml[line-length]
+  el/genesis-config.yaml: "{{ lookup('ansible.builtin.url', 'https://raw.githubusercontent.com/trungdlp-wolffun/ethereum-genesis-generator/v{{ethereum_genesis_generator_version}}/config-example/el/genesis-config.yaml', split_lines=false) }}" # noqa yaml[line-length]
   values.env: |-
     export CHAIN_ID="{{ ethereum_genesis_chain_id }}"
     export DEPOSIT_CONTRACT_ADDRESS="0x6f22fFbC56eFF051aECF839396DD1eD9aD6BBA9D"
     export EL_AND_CL_MNEMONIC="{{ ethereum_genesis_mnemonic }}"
     export CL_EXEC_BLOCK="0"
     export DEPOSIT_CONTRACT_BLOCK="0x0000000000000000000000000000000000000000000000000000000000000000"
-    export NUMBER_OF_VALIDATORS=0
+    export NUMBER_OF_VALIDATORS=200
     export GENESIS_FORK_VERSION="0x10{{ ethereum_genesis_fork_version_suffix }}"
     export ALTAIR_FORK_VERSION="0x20{{ ethereum_genesis_fork_version_suffix }}"
     export BELLATRIX_FORK_VERSION="0x30{{ ethereum_genesis_fork_version_suffix }}"
@@ -88,12 +88,7 @@ bootstrap_default_user_authorized_keys_plain:
   - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDbboxOo0jyL3DNxqZ6UTEnZPEzPDPnujEYaClqNWSLWkphczHKAnJPkrwbAWB4JbJKjsAJ5kn53f10KPnUyZvJ5Jn8Rpf7RM7+56MYaBg84gVoA2KeIYxUa7h8neY7J61Galp0c6cOK+hp1lPsoiBSdCW/Rtbv6ALCcVe+4+uCW5FRoJcNRJfGRLRnjh1pw57HQw9O55mf319s4rVUq4umznQ0CciEx3rVMtXf4xjIZDZAhNpGaBh8AtHauaMZCOGociAIquYYqoSQnnmnOBiduRa5OkvGZomgybNQivlYboDeF6sQ71KVzRXSI+mxCYbSp246lqSdQtQsjFA54NYl/qWgAql0uqCqsZidW+XBjquyItRl2Rfzzy5Fk/gMOAJXHQYp4POfgFbqtxjWpfnuOKqW/1IGWcIt2g016effUqGgj/oePX0g+duFdszSKK773rJBySgafFF6XWNqagrLmE4LUGC+6P3oxzYTSFGeUVA21OayL+K40XPpJti5zns= # devops-eth2-shared"
   - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWh9NW66VD4BPKETNyZeZrGN1f7G6dkihW3eAc7cbJPFQGIpnWc2tGq5o13vWW+SoCh16nkYM2oak+PJQxXYTiQnrMJSmSFd7E0DmdcoKadGJEnfosrH++aOZf/eVLe5q3E9NQFVSdOPo1MCRRTuZxPkuMxS6QikW3otWrA3F2vFgmYyki3Cy8huQzHKUZGicividYcUSFTydR2L0oWUNve3FyqMQQQPnfaJ1RvrkeGtdhRSAxa6L0jzgRK7fjpUyhKOofr7kCKARGELRRiB9QikRAoHU2/D/2jtJjKlTCJxArzXyDF2IcQCco+5Oe9x4c7Xch32dbscJSmjaAvsxRnu7GEFCS7b6kKGvwcoq5vJzvp3RBBR7Mosxv6pcM/q7Z4RhXOFVFFiPVl1dqkqSPkUrHwg8LtWOxC+GAl36vxhHLdDEV/RhbSAzO6SfYEWYGH1w7u4oiy2XAT2cNCO0j0tSHS5chX+d7TzwAbBE2HuPL84GVGHZG875hmiE+Dok= # github-actions-ci"
 bootstrap_default_user_authorized_keys_github_all:
-  - barnabasbusa
-  - parithosh
-  - samcm
-  - savid
-  - skylenet
-  - pk910
+  - trungdlp-wolffun
 bootstrap_default_user_authorized_keys_github: >
   {{
     (bootstrap_default_user_authorized_keys_github_all | default([])) +
@@ -118,7 +113,7 @@ ethereum_node_el_ports_ws_rpc: 8546
 ethereum_node_el_ports_engine: 8551
 ethereum_node_el_ports_metrics: 6060
 
-ethereum_node_json_rpc_snooper_engine_enabled: true
+ethereum_node_json_rpc_snooper_engine_enabled: false
 ethereum_node_json_rpc_snooper_engine_port: 8561
 ethereum_node_json_rpc_snooper_engine_name: "snooper-engine"
 
@@ -144,7 +139,7 @@ gen_basic_auth_nginx_password: "{{ secret_nginx_shared_basic_auth.password }}"
 
 # role: ethpandaops.general.docker_nginx_proxy
 docker_nginx_proxy_container_name: nginx-proxy
-docker_nginx_proxy_default_email: "certs@ethpandaops.io"
+docker_nginx_proxy_default_email: "trungdlp@wolffungame.com"
 docker_nginx_proxy_docker_gen_container_name: nginx-proxy-gen
 docker_nginx_proxy_docker_gen_container_env:
   RESOLVERS: "1.1.1.1"

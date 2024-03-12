@@ -1,7 +1,7 @@
 #!/bin/zsh
 node="lighthouse-geth-1"
 network="devnet-0"
-domain="ethpandaops.io"
+domain="giangho.pro"
 prefix=""
 sops_name=$(sops --decrypt ../ansible/inventories/$network/group_vars/all/all.sops.yaml | yq -r '.secret_nginx_shared_basic_auth.name')
 sops_password=$(sops --decrypt ../ansible/inventories/$network/group_vars/all/all.sops.yaml | yq -r '.secret_nginx_shared_basic_auth.password')
