@@ -41,7 +41,7 @@ locals {
   base_cidr_block = var.base_cidr_block
   google_vpcs = {
     for region in var.regions : region => {
-      name     = "${var.ethereum_network}-${region}"
+      name     = "${var.ethereum_network}-${join("-", slice(split("-", region), 0, 2))}"
       region   = region
       ip_range = cidrsubnet(local.base_cidr_block, 8, index(var.regions, region))
     }
@@ -105,15 +105,8 @@ locals {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
-//                                  DIGITALOCEAN RESOURCES
+//                                  GOOGLE CLOUD RESOURCES
 ////////////////////////////////////////////////////////////////////////////////////////
-# data "digitalocean_project" "main" {
-#   name = var.digitalocean_project_name
-# }
-
-# resource "tls_private_key" "main" {
-#   algorithm = "ED25519"
-# }
 
 resource "google_compute_network" "main" {
   for_each = local.google_vpcs
@@ -123,14 +116,6 @@ resource "google_compute_network" "main" {
   # region   = each.value["region"]
   # ip_range = each.value["ip_range"]
 }
-
-# resource "digitalocean_vpc" "main" {
-#   for_each = local.digitalocean_vpcs
-
-#   name     = each.value["name"]
-#   region   = each.value["region"]
-#   ip_range = each.value["ip_range"]
-# }
 
 resource "google_compute_address" "main" {
   for_each = {
