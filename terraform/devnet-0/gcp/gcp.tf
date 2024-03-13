@@ -193,6 +193,7 @@ resource "google_compute_firewall" "main" {
 ////////////////////////////////////////////////////////////////////////////////////////
 
 data "cloudflare_zone" "default" {
+  account_id = "501f6db1e29a7fc391c5f9efcdd387d4"
   name = "giangho.pro"
 }
 
@@ -206,6 +207,7 @@ resource "cloudflare_record" "server_record" {
   value   = google_compute_address.main[each.value.id].address
   proxied = false
   ttl     = 120
+  comment = "Node ${var.ethereum_network}: ${each.value.name}"
 }
 
 # resource "cloudflare_record" "server_record6" {
@@ -230,6 +232,7 @@ resource "cloudflare_record" "server_record_rpc" {
   value   = google_compute_address.main[each.value.id].address
   proxied = false
   ttl     = 120
+  comment = "RPC ${var.ethereum_network}: ${each.value.name}"
 }
 
 # resource "cloudflare_record" "server_record_rpc6" {
@@ -254,6 +257,7 @@ resource "cloudflare_record" "server_record_beacon" {
   value   = google_compute_address.main[each.value.id].address
   proxied = false
   ttl     = 120
+  comment = "Beacon ${var.ethereum_network}: ${each.value.name}"
 }
 
 # resource "cloudflare_record" "server_record_beacon6" {
