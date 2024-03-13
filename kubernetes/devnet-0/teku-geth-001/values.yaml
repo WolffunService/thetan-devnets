@@ -106,6 +106,8 @@ teku-geth-001:
 
 
   geth:
+    httpPort: 8545
+    wsPort: 8546
     enabled: true
     fullnameOverride: geth-teku-001
     image:
