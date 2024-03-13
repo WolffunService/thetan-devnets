@@ -16,7 +16,7 @@ testnet-homepage:
   ingress:
     enabled: true
 
-    className: ingress-nginx-public
+    className: nginx
 
     hosts:
       - host: devnet-0.giangho.pro

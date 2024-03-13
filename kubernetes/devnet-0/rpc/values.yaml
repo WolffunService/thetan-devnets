@@ -15,7 +15,7 @@ rpc-proxy:
     annotations:
       nginx.ingress.kubernetes.io/enable-cors: "true"
 
-    className: ingress-nginx-public
+    className: nginx
 
     hosts:
       - host: rpc.devnet-0.giangho.pro

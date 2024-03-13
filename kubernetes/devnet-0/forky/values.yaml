@@ -13,7 +13,7 @@ forky:
       memory: 512Mi
   ingress:
     enabled: true
-    className: ingress-nginx-public
+    className: nginx
     hosts:
       - host: forky.devnet-0.giangho.pro
         paths:
@@ -39,7 +39,7 @@ forky:
           spec:
             seconds_per_slot: 12
             slots_per_epoch: 32
-            genesis_time: 1710321200
+            genesis_time: 1710333705
       sources:
         - name: bootnode-1
           type: "beacon_node"

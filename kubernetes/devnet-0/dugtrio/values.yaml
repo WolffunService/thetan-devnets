@@ -15,7 +15,7 @@ dugtrio:
       memory: 1Gi
   ingress:
     enabled: true
-    className: ingress-nginx-public
+    className: nginx
     hosts:
       - host: beacon.devnet-0.giangho.pro
         paths:

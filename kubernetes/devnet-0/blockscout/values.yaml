@@ -19,7 +19,7 @@ blockscout:
 
   ingress:
     enabled: true
-    className: ingress-nginx-public
+    className: nginx
     hosts:
       - host: explorer.devnet-0.giangho.pro
         paths:

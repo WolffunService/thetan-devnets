@@ -8,7 +8,7 @@ forkmon:
     pullPolicy: IfNotPresent
   ingress:
     enabled: true
-    className: ingress-nginx-public
+    className: nginx
     hosts:
       - host: forkmon.devnet-0.giangho.pro
         paths:

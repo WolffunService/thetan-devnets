@@ -15,7 +15,7 @@ dora:
       memory: 2Gi
   ingress:
     enabled: true
-    className: ingress-nginx-public
+    className: nginx
     hosts:
       - host: dora.devnet-0.giangho.pro
         paths:

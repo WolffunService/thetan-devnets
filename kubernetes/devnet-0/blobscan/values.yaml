@@ -8,7 +8,7 @@ blobscan:
     pullPolicy: Always
   ingress:
     enabled: true
-    className: ingress-nginx-public
+    className: nginx
     hosts:
       - host: blobscan.devnet-0.giangho.pro
         paths:
@@ -51,7 +51,7 @@ blobscan-api:
     CHAIN_ID: "7088888888"
   ingress:
     enabled: true
-    className: ingress-nginx-public
+    className: nginx
     hosts:
       - host: blobscan-api.devnet-0.giangho.pro
         paths:
