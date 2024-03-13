@@ -25,7 +25,7 @@ blobscan:
     NEXT_PUBLIC_BEACON_BASE_URL: https://dora.devnet-0.giangho.pro
     NEXT_PUBLIC_EXPLORER_BASE_URL: https://explorer.devnet-0.giangho.pro
     BEACON_NODE_ENDPOINT: http://teku-geth-001:5052
-    CHAIN_ID: "7061085022"
+    CHAIN_ID: "7088888888"
   blobscandb:
     fullnameOverride: blobscan-blobscandb
 
@@ -48,7 +48,7 @@ blobscan-api:
     pullPolicy: Always
   config:
     BEACON_NODE_ENDPOINT: http://teku-geth-001:5052
-    CHAIN_ID: "7061085022"
+    CHAIN_ID: "7088888888"
   ingress:
     enabled: true
     className: ingress-nginx-public

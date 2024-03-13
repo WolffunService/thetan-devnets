@@ -8,7 +8,7 @@ CONFIG_NAME: testnet # needs to exist because of Prysm. Otherwise it conflicts w
 MIN_GENESIS_ACTIVE_VALIDATOR_COUNT: 200
 # Mar-01-2021 08:53:32 AM +UTC
 # This is an invalid valid and should be updated when you create the genesis
-MIN_GENESIS_TIME: 1710251420
+MIN_GENESIS_TIME: 1710259180
 GENESIS_FORK_VERSION: 0x10499101
 GENESIS_DELAY: 60
 
@@ -73,8 +73,8 @@ PROPOSER_SCORE_BOOST: 40
 
 # Deposit contract
 # ---------------------------------------------------------------
-DEPOSIT_CHAIN_ID: 7061085022
-DEPOSIT_NETWORK_ID: 7061085022
+DEPOSIT_CHAIN_ID: 7088888888
+DEPOSIT_NETWORK_ID: 7088888888
 DEPOSIT_CONTRACT_ADDRESS: 0x6f22fFbC56eFF051aECF839396DD1eD9aD6BBA9D
 
 # Networking
