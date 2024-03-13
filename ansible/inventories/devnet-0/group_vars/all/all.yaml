@@ -15,7 +15,6 @@ ethereum_network_deposit_contract: >-
 ethereum_network_deposit_contract_block: >-
   {{ lookup('file', eth_testnet_config_local_dir_src + '/deposit_contract_block.txt') }}
 
-ethereum_node_config_hostname: "config.{{ server_fqdn }}"
 ethereum_node_rcp_hostname: "rpc.{{ server_fqdn }}"
 ethereum_node_beacon_hostname: "bn.{{ server_fqdn }}"
 
