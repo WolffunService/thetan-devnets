@@ -70,7 +70,7 @@ locals {
 
 locals {
   google_default_region = "asia-southeast1-a"
-  google_default_size   = "n2-standard-2"
+  google_default_size   = "e2-standard-2"
   google_default_image  = "debian-cloud/debian-12"
   google_global_tags = [
     "eth-network--${var.ethereum_network}"
@@ -156,10 +156,11 @@ resource "google_compute_instance" "main" {
     }
   }
 
-  scheduling {
-      preemptible = true
-      automatic_restart = false
-  }
+  # Don't restart the instance if it's terminated by Google
+  # scheduling {
+  #     preemptible = true
+  #     automatic_restart = false
+  # }
 }
 
 resource "google_compute_firewall" "main" {
