@@ -111,6 +111,8 @@ teku-geth-001:
   geth:
     enabled: true
     fullnameOverride: geth-teku-001
+    httpPort: 8545
+    wsPort: 8546
     image:
       repository: ethereum/client-go
       tag: stable
