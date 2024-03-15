@@ -39,20 +39,20 @@ forky:
           spec:
             seconds_per_slot: 12
             slots_per_epoch: 32
-            genesis_time: 1710333705
+            genesis_time: 1710436186
       sources:
         - name: bootnode-1
           type: "beacon_node"
           config:
             address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.bootnode-1.devnet-0.giangho.pro
             polling_interval: "12s"
-        - name: lighthouse-erigon-1
-          type: "beacon_node"
-          config:
-            address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.lighthouse-erigon-1.devnet-0.giangho.pro
-            polling_interval: "12s"
         - name: lighthouse-geth-1
           type: "beacon_node"
           config:
             address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.lighthouse-geth-1.devnet-0.giangho.pro
+            polling_interval: "12s"
+        - name: prysm-geth-1
+          type: "beacon_node"
+          config:
+            address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.prysm-geth-1.devnet-0.giangho.pro
             polling_interval: "12s"

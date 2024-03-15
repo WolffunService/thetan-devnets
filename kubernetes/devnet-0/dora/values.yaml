@@ -43,11 +43,10 @@ dora:
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.bootnode-1.devnet-0.giangho.pro
     name: bootnode-1
     priority: -1
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.lighthouse-erigon-1.devnet-0.giangho.pro
-    name: lighthouse-erigon-1
-    priority: -1
-    archive: true
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.lighthouse-geth-1.devnet-0.giangho.pro
     name: lighthouse-geth-1
     priority: -1
     archive: true
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@bn.prysm-geth-1.devnet-0.giangho.pro
+    name: prysm-geth-1
+    priority: -1

@@ -48,7 +48,7 @@ variable "lighthouse_ethereumjs" {
 variable "lighthouse_erigon" {
   default = {
     name            = "lighthouse-erigon"
-    count           = 1
+    count           = 0
     validator_start = 100
     validator_end   = 200
   }
@@ -67,9 +67,9 @@ variable "lighthouse_reth" {
 variable "prysm_geth" {
   default = {
     name            = "prysm-geth"
-    count           = 0
-    validator_start = 0
-    validator_end   = 0
+    count           = 1
+    validator_start = 200
+    validator_end   = 300
   }
 }
 

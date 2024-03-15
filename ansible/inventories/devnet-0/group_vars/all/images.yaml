@@ -9,7 +9,7 @@ default_ethereum_client_images:
 ### Execution layer clients
   besu: hyperledger/besu:latest
   geth: ethereum/client-go:stable
-  erigon: thorax/erigon:stable
+  erigon: thorax/erigon:v2.58.1
   ethereumjs: ethpandaops/ethereumjs:master
   nethermind: nethermindeth/nethermind:cancun
   reth: ethpandaops/reth:main

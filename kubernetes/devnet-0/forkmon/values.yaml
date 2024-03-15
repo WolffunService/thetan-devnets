@@ -21,10 +21,10 @@ forkmon:
     name: rpc-teku-geth-001
   - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@rpc.bootnode-1.devnet-0.giangho.pro
     name: bootnode-1
-  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@rpc.lighthouse-erigon-1.devnet-0.giangho.pro
-    name: lighthouse-erigon-1
   - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@rpc.lighthouse-geth-1.devnet-0.giangho.pro
     name: lighthouse-geth-1
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.node_ingress.combined}>@rpc.prysm-geth-1.devnet-0.giangho.pro
+    name: prysm-geth-1
 
   config: |
     # How often to reload data from the nodes

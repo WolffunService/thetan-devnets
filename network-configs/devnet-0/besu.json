@@ -13,9 +13,9 @@
     "londonBlock": 0,
     "preMergeForkBlock": 0,
     "terminalTotalDifficulty": 0,
-    "shanghaiTime": 1710259240,
+    "shanghaiTime": 1710421594,
     "ethash": {},
-    "cancunTime": 1710260008
+    "cancunTime": 1710422362
   },
   "alloc": {
     "0x0000000000000000000000000000000000000000": {
@@ -895,5 +895,5 @@
   "nonce": "0x1234",
   "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "timestamp": "1710259180"
+  "timestamp": "1710421534"
 }
