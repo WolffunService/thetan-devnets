@@ -21,7 +21,7 @@ teku-geth-001:
               - --rpc-http-api=ADMIN,DEBUG,ETH,MINER,NET,TRACE,TXPOOL,WEB3
               - --sync-mode=FULL
               - --data-storage-format=BONSAI
-              - --ethstats=k8s-teku-geth-001:<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.ethstats_secret}>@ethstats.devnet-0.giangho.pro:443
+              - --ethstats=k8s-teku-geth-001:EthServerSecret@ethstats.devnet-0.giangho.pro:443
               - --Xfilter-on-enr-fork-id=true
             nethermind:
               - --Init.ChainSpecPath=/data/network-config/chainspec.json
@@ -32,7 +32,7 @@ teku-geth-001:
               - --config=none.cfg
               - --EthStats.Enabled=true
               - --EthStats.Name=k8s-teku-geth-001
-              - --EthStats.Secret=<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.ethstats_secret}>
+              - --EthStats.Secret=EthServerSecret
               - --EthStats.Server=wss://ethstats.devnet-0.giangho.pro/api/
               - --log=INFO
             geth:
@@ -42,7 +42,7 @@ teku-geth-001:
               - --networkid=7088888888
               - --syncmode=full
               - --bootnodes=enode://1906f5fcf1e0f891c9ab68a1e939df0ca7275fd07e5da4ee370cb813fee0135e1b4defd73a7e4cb838ae8a89c547c76272c7c696dc46f1c1d0a67adbbf374fb5@35.240.252.13:30303?discport=30303
-              - --ethstats=k8s-teku-geth-001:<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.ethstats_secret}>@ethstats.devnet-0.giangho.pro
+              - --ethstats=k8s-teku-geth-001:EthServerSecret@ethstats.devnet-0.giangho.pro
               - --rpc.allow-unprotected-txs
             erigon:
               - --chain=dev
@@ -53,7 +53,7 @@ teku-geth-001:
               - --networkid=7088888888
               - --db.size.limit=500GB
               - --bootnodes=enode://1906f5fcf1e0f891c9ab68a1e939df0ca7275fd07e5da4ee370cb813fee0135e1b4defd73a7e4cb838ae8a89c547c76272c7c696dc46f1c1d0a67adbbf374fb5@35.240.252.13:30303?discport=30303
-              - --ethstats=k8s-teku-geth-001:<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.template-devnets.ethstats_secret}>@ethstats.devnet-0.giangho.pro
+              - --ethstats=k8s-teku-geth-001:EthServerSecret@ethstats.devnet-0.giangho.pro
             ethereumjs:
               - --gethGenesis=/data/network-config/genesis.json
               - --bootnodes=enode://1906f5fcf1e0f891c9ab68a1e939df0ca7275fd07e5da4ee370cb813fee0135e1b4defd73a7e4cb838ae8a89c547c76272c7c696dc46f1c1d0a67adbbf374fb5@35.240.252.13:30303?discport=30303
