@@ -76,7 +76,7 @@ blockscout:
           mountPath: /config-update
 
   serviceMonitor:
-    enabled: true
+    enabled: false
 
   postgresql:
     fullnameOverride: blockscout-postgresql
