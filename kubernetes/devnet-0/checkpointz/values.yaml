@@ -45,9 +45,9 @@ checkpointz:
 
     beacon:
       upstreams:
-      - name: rpc-teku-geth-001
-        address: http://teku-geth-001:5052
-        dataProvider: true
+      # - name: rpc-teku-geth-001
+      #   address: http://teku-geth-001:5052
+      #   dataProvider: true
       - name: bootnode-1
         address: https://bn.bootnode-1.devnet-0.giangho.pro
         dataProvider: true
