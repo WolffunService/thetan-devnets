@@ -10,7 +10,7 @@ teku-geth-001:
     checkpointSync:
       enabled: false
       addresses:
-        devnet-0: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.dencun-devnets.node_ingress.combined}>@bn.teku-nethermind-1.devnet-0.giangho.pro
+        devnet-0: https://checkpoint-sync.devnet-0.giangho.pro
     clientArgs:
       networks:
         devnet-0:
