@@ -8,7 +8,7 @@ teku-geth-001:
       rpcEndpoint: http://geth-teku-001:8545
       beaconEndpoint: http://teku-geth-001:5052
     checkpointSync:
-      enabled: true
+      enabled: false
       addresses:
         devnet-0: https://checkpoint-sync.devnet-0.giangho.pro
     clientArgs:
